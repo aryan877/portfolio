@@ -7,7 +7,7 @@ function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Flex justifyContent="space-between" alignItems="center" w="100%" p={4}>
+    <Flex p={4} justifyContent="space-between" alignItems="center" width="full">
       <span>Aryan.</span>
       <IconButton
         aria-label="Toggle Mode"
