@@ -1,3 +1,4 @@
+import { useColorMode } from '@chakra-ui/color-mode';
 import {
   Badge,
   Box,
@@ -28,17 +29,25 @@ import {
   FaMapMarkerAlt,
 } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
+import About from '../../components/About';
 import Navbar from '../../components/Navbar';
 import Projects from '../../components/Projects';
+import Wall from '../../components/Wall';
 function MyComponent() {
+  const { colorMode } = useColorMode();
+  const isDarkMode = colorMode === 'dark';
+  const borderColor = isDarkMode ? 'gray.700' : 'gray.200';
   return (
     <Container
       maxW="720px"
       width="100%"
       px="0"
       minHeight="100vh"
-      borderLeft="1px solid #303336"
-      borderRight="1px solid #303336"
+      borderWidth="1px"
+      borderColor={borderColor}
+      borderStyle="solid"
+      borderTop="none"
+      borderBottom="none"
     >
       <Navbar />
       <Box width="100%">
@@ -73,7 +82,7 @@ function MyComponent() {
           <Flex
             fontWeight="semibold"
             justify="start"
-            color="#808080"
+            color={colorMode == 'light' ? 'gray.600' : 'gray.400'}
             alignItems="center"
           >
             <FaAt size={18} />
@@ -86,7 +95,7 @@ function MyComponent() {
             <Text mr="4">2023</Text>
           </Flex>
           <Spacer h={4} />
-          <Text width="80%" fontWeight="bold">
+          <Text width="80%" fontWeight="semibold">
             Web wizard. Debugging ninja. Adventure seeker. Ready to tackle any
             coding challenge thrown my way.
           </Text>
@@ -197,23 +206,60 @@ function MyComponent() {
           {/* ////// */}
         </Box>
       </Box>
-      <Tabs colorScheme="red">
+      <Tabs colorScheme="red" minHeight={400}>
         <TabList>
-          <Tab>Projects</Tab>
-          <Tab>About</Tab>
-          <Tab>Comment</Tab>
-          <Tab>Contact</Tab>
+          <Tab
+            fontWeight="semibold"
+            _selected={{ borderBottom: '4px solid red' }}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Projects
+          </Tab>
+          <Tab
+            fontWeight="semibold"
+            _selected={{ borderBottom: '4px solid red' }}
+            _focus={{ boxShadow: 'none' }}
+          >
+            About
+          </Tab>
+          <Tab
+            fontWeight="semibold"
+            _selected={{ borderBottom: '4px solid red' }}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Freelance Projects
+          </Tab>
+          <Tab
+            fontWeight="semibold"
+            _selected={{ borderBottom: '4px solid red' }}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Wall
+          </Tab>
+          <Tab
+            fontWeight="semibold"
+            _selected={{ borderBottom: '4px solid red' }}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Contact
+          </Tab>
         </TabList>
 
-        <TabPanels>
+        <TabPanels py={2}>
           <TabPanel>
             <Projects />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <About />
           </TabPanel>
           <TabPanel>
-            <p>three!</p>
+            <p>Upcoming</p>
+          </TabPanel>
+          <TabPanel>
+            <Wall />
+          </TabPanel>
+          <TabPanel>
+            <p>Upcoming</p>
           </TabPanel>
         </TabPanels>
       </Tabs>
